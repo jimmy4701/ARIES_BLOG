@@ -5,23 +5,17 @@ import {
     Route
 } from 'react-router-dom';
 
+import AdminPages from '/imports/pages/admin/AdminPages';
 import NotFound from '/imports/pages/general/NotFound';
 
-export class NotFoundAdmin extends Component {
-
-    render() {
-        return (
-            <h1>Page admin non trouvée</h1>
-        );
-    }
-}
 
 export default class AdminLayout extends Component {
 
     render() {
         return (
             <Switch>
-                <Route path="*" component={NotFoundAdmin} />
+                <Route path="/admin/pages" component={AdminPages} />
+                <Route path="*" component={NotFound} />
             </Switch>
         );
     }
