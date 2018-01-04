@@ -29,6 +29,14 @@ export class Landing extends Component {
         
     }
 
+    remove_page = (page_id) => {
+        Meteor.call('dynamic_pages.remove', page_id , (error, result) => {
+            if(error){
+                alert('ERREUR DE SUPPRESSION')
+            }
+          });
+    }
+
     render(){
         const {title, description} = this.state
         const {loading, dynamic_pages} = this.props
@@ -45,7 +53,7 @@ export class Landing extends Component {
                         <button>Créer une page</button>
                     </form>
                     {dynamic_pages.map((page, index) => {
-                        return <p key={page._id}>{page.title} - {page.description}</p>
+                        return <p key={page._id} onClick={() => this.remove_page(page._id)}>{page.title} - {page.description}</p>
                     })}
                 </div>
             );
