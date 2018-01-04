@@ -22,6 +22,7 @@ export default class Landing extends Component {
                 alert('ERREUR DE CREATION DE PAGE : ' + error);
             }else{
                 console.log('NOUVELLE PAGE AJOUTÉE');
+                this.setState({title: '', description: ''})
             }
         });
         
