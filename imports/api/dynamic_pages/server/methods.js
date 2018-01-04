@@ -6,8 +6,8 @@ Meteor.methods({
         console.log('DYNAMIC PAGES INSERT')
         DynamicPages.insert(data)
     },
-    'dynamic_pages.remove'(page_id) {
+    'dynamic_pages.remove'(page_id){
         console.log('DYNAMIC PAGES REMOVE')
-        DynamicPages.remove({_id: page_id})
+        DynamicPages.remove(page_id)
     }
 })
