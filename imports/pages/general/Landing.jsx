@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { DynamicPages } from '/imports/api/dynamic_pages/dynamic_pages';
 
+import { Grid, Header, Loader, Label, Form, Input, Button } from 'semantic-ui-react';
+
 export class Landing extends Component {
 
     state = {
@@ -42,21 +44,25 @@ export class Landing extends Component {
         const {loading, dynamic_pages} = this.props
         
         if(loading){
-            return <div>LOADING</div>
+            return <Loader>LOADING</Loader>
         }else{
-            console.log('pages', dynamic_pages)
             return(
-                <div>
-                    <h1>MON BLOG</h1>
-                    <form onSubmit={this.create_page}>
-                        <input type="text" value={title}  onChange={(e) => this.handleChange('title', e)} placeholder="Title"/>
-                        <input type="text" value={description}  onChange={(e) => this.handleChange('description', e)} placeholder="Description"/>
-                        <button>Créer une page</button>
-                    </form>
-                    {dynamic_pages.map((page, index) => {
+              <Grid stackable>
+                <Grid.Column width={8} color="red">
+                    <Header as="h1">MON BLOG</Header>
+                    <Form onSubmit={this.create_page}>
+                        <Input type="text" value={title}  onChange={(e) => this.handleChange('title', e)} placeholder="Title"/>
+                        <Input type="text" value={description}  onChange={(e) => this.handleChange('description', e)} placeholder="Description"/>
+                        <Button>Créer une page</Button>
+                    </Form>
+                    
+                </Grid.Column>
+                <Grid.Column width={8} color="green">
+                {dynamic_pages.map((page, index) => {
                         return <p key={page._id} onClick={() => this.remove_page(page._id)} >{page.title} - {page.description}</p>
                     })}
-                </div>
+                </Grid.Column>
+              </Grid>  
             );
         }
     }
@@ -71,3 +77,5 @@ export default LandingContainer = withTracker(() => {
       dynamic_pages
   }
 })(Landing)
+
+

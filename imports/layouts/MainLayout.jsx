@@ -5,6 +5,8 @@ import {
     Route
 } from 'react-router-dom';
 
+import {Grid} from 'semantic-ui-react';
+
 import Landing from '/imports/pages/general/Landing';
 import NotFound from '/imports/pages/general/NotFound';
 
@@ -12,10 +14,14 @@ export default class MainLayout extends Component {
 
     render() {
         return (
-            <Switch>
-                <Route exact path="/" component={Landing} />
-                <Route path="*" component={NotFound} />
-            </Switch>
+            <Grid stackable>
+                <Grid.Column width={16}>
+                    <Switch>
+                        <Route exact path="/" component={Landing} />
+                        <Route path="*" component={NotFound} />
+                    </Switch>
+                </Grid.Column>
+            </Grid>
         );
     }
 }
