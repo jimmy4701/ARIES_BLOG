@@ -1,1 +1,18 @@
+import {Mongo} from 'meteor/mongo';
+
 export const DynamicPages = new Mongo.Collection('dynamic_pages');
+
+const DynamicPagesSchema = new SimpleSchema({
+    title: {
+        type: String
+    },
+    description: {
+        type: String,
+        optional: true
+    },
+    created_at: {
+        type: Date
+    }
+})
+
+DynamicPages.attachSchema(DynamicPagesSchema);
