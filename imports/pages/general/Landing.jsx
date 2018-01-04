@@ -2,24 +2,41 @@ import React, {Component} from 'react';
 
 export default class Landing extends Component {
 
+    state = {
+        title: '',
+        description: ''
+    }
 
-    create_page = () => {
+    handleChange = (attr, e) => {
+        let state = this.state
+        state[attr] = e.target.value
+        this.setState(state)
+    }
+
+
+    create_page = (event) => {
+        event.preventDefault();
+
+        Meteor.call('dynamic_pages.insert', this.state, (error, result) => {
+            if(error){
+                alert('ERREUR DE CREATION DE PAGE : ' + error);
+            }else{
+                console.log('NOUVELLE PAGE AJOUTÉE');
+            }
+        });
         
-        const new_page = {
-            title: "Ma première page",
-            description: "Une super page qui devrait entrer dans la BDD",
-            active: true,
-            created_at: new Date()
-        }
-
-        Meteor.call('dynamic_pages.insert', new_page);
     }
 
     render(){
+        const {title, description} = this.state
         return(
             <div>
                 <h1>MON BLOG</h1>
-                <button onClick={this.create_page}>Créer une page</button>
+                <form onSubmit={this.create_page}>
+                    <input type="text" value={title}  onChange={(e) => this.handleChange('title', e)} placeholder="Title"/>
+                    <input type="text" value={description}  onChange={(e) => this.handleChange('description', e)} placeholder="Description"/>
+                    <button>Créer une page</button>
+                </form>
             </div>
         );
     }
