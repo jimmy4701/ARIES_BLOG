@@ -2,9 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { render } from 'react-dom';
 
+import App from '/imports/startup/App';
+
 Meteor.startup(() => {
   render(
-    <h1>HELLO WORLD</h1>,
+    <App />,
     document.getElementById('root')
   )
 });
