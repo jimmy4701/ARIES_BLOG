@@ -5,8 +5,8 @@ import {
     Route
 } from 'react-router-dom';
 
-import Landing from '/imports/pages/general/Landing';
-import NotFound from '/imports/pages/general/NotFound';
+import MainLayout from '/imports/layouts/MainLayout'
+import AdminLayout from '/imports/layouts/AdminLayout'
 
 export default class App extends Component {
 
@@ -14,8 +14,8 @@ export default class App extends Component {
         return (
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Landing} />
-                    <Route path="*" component={NotFound} />
+                    <Route path="/admin" component={AdminLayout} />
+                    <Route path="*" component={MainLayout} />
                 </Switch>
             </Router>
         );
