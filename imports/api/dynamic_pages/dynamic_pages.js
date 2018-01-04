@@ -1,0 +1,1 @@
+export const DynamicPages = new Mongo.Collection('dynamic_pages');
