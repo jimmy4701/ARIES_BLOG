@@ -42,7 +42,7 @@ export class Landing extends Component {
 
     render() {
         const { title, description } = this.state
-        const { loading, dynamic_pages } = this.props
+        const { loading, dynamic_pages, user_id } = this.props
 
         if (loading) {
             return <Loader>LOADING</Loader>
@@ -64,7 +64,9 @@ export class Landing extends Component {
                         })}
                     </Grid.Column>
                     <Grid.Column width={16}>
+                    {!user_id &&
                         <SignUpForm />
+                    }
                     </Grid.Column>
                 </Grid>
             );
@@ -76,9 +78,11 @@ export default LandingContainer = withTracker(() => {
     const dynamicPagesPublication = Meteor.subscribe('dynamic_pages.all')
     const loading = !dynamicPagesPublication.ready()
     const dynamic_pages = DynamicPages.find({}).fetch()
+    const user_id = Meteor.userId()
     return {
         loading,
-        dynamic_pages
+        dynamic_pages,
+        user_id
     }
 })(Landing)
 

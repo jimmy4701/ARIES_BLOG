@@ -22,7 +22,13 @@ export default class SignUpForm extends Component{
             if(error){
                 alert("ERREUR LORS DE L'INSCRIPTION : " + error);
             }else{
-                
+                Meteor.loginWithPassword(this.state.email, this.state.password, (error, result) => {
+                    if(error){
+                        console.log('Erreur lors de la connexion', error);
+                    }else{
+                        this.setState({})
+                    }
+                })
             }
         })
     }
