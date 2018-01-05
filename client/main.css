@@ -1,1 +1,25 @@
 /* CSS declarations go here */
+.white-item{
+    color: white !important;
+}
+
+/* HELPERS */
+.center-align{
+    text-align: center;
+}
+
+.left-align{
+    text-align: center;
+}
+
+.right-align{
+    text-align: right;
+}
+
+.justify-align{
+    text-align: justify;
+}
+
+.total-height{
+    min-height: 100vh;
+}
