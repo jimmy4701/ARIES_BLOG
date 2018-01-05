@@ -16,6 +16,14 @@ import Navbar from '/imports/components/navigation/Navbar';
 
 export default class AdminLayout extends Component {
 
+
+    componentWillMount(){
+        if(!Roles.userIsInRole(Meteor.userId(), 'admin')){
+            alert("VOUS N'ETES PAS ADMINISTRATEUR")
+            this.props.history.push('/')
+        }
+    }
+
     render() {
         return (
             <Grid stackable>

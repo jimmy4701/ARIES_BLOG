@@ -5,5 +5,17 @@ import '/imports/api/accounts/server/methods';
 
 
 Meteor.startup(() => {
-  // code to run on server at startup
+  const first_user = Meteor.users.findOne()
+  if(!first_user){
+    console.log("CRÉATION D'UN PREMIER UTILISATEUR")
+    const user_id = Accounts.createUser({
+      email: 'jimmy@yopmail.com',
+      password: 'changeme',
+      username: 'admin'
+    });
+
+    Roles.addUsersToRoles(user_id, 'admin')
+
+  }
 });
+ 
