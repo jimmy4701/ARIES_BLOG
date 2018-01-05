@@ -5,10 +5,11 @@ import {
     Route
 } from 'react-router-dom';
 
-import {Grid} from 'semantic-ui-react';
+import {Grid, Container} from 'semantic-ui-react';
 
 // Pages
 import Landing from '/imports/pages/general/Landing';
+import SigninPage from '/imports/pages/general/SigninPage';
 import NotFound from '/imports/pages/general/NotFound';
 
 // Components
@@ -23,10 +24,13 @@ export default class MainLayout extends Component {
                     <Navbar />
                 </Grid.Column>
                 <Grid.Column width={16}>
-                    <Switch>
-                        <Route exact path="/" component={Landing} />
-                        <Route path="*" component={NotFound} />
-                    </Switch>
+                    <Container>
+                        <Switch>
+                            <Route exact path="/" component={Landing} />
+                            <Route exact path="/sign_in" component={SigninPage} />
+                            <Route path="*" component={NotFound} />
+                        </Switch>
+                    </Container>
                 </Grid.Column>
             </Grid>
         );
