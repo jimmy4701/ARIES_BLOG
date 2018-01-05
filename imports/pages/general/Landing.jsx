@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { DynamicPages } from '/imports/api/dynamic_pages/dynamic_pages';
 import SignUpForm from '/imports/components/accounts/SignUpForm';
+import SignInForm from '/imports/components/accounts/SignInForm';
 
 import { Grid, Header, Loader, Label, Form, Input, Button } from 'semantic-ui-react';
 
@@ -40,6 +41,10 @@ export class Landing extends Component {
         })
     }
 
+    on_connected_user = () => {
+        alert('Vous etes bien connecté')
+    }
+
     render() {
         const { title, description } = this.state
         const { loading, dynamic_pages, user_id } = this.props
@@ -64,9 +69,16 @@ export class Landing extends Component {
                         })}
                     </Grid.Column>
                     <Grid.Column width={16}>
-                    {!user_id &&
-                        <SignUpForm />
-                    }
+                        {!user_id &&
+                            <Grid stackable>
+                                <Grid.Column width={8}>
+                                    <SignUpForm />
+                                </Grid.Column>
+                                <Grid.Column width={8}>
+                                    <SignInForm onSignedIn={this.on_connected_user} />
+                                </Grid.Column>
+                            </Grid>
+                        }
                     </Grid.Column>
                 </Grid>
             );
