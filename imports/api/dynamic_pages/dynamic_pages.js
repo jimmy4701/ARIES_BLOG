@@ -10,6 +10,10 @@ const DynamicPagesSchema = new SimpleSchema({
         type: String,
         optional: true
     },
+    image_url: {
+        type: String,
+        optional: true
+    },
     created_at: {
         type: Date
     }

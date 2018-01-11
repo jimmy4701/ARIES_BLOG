@@ -4,7 +4,7 @@ import {
     Switch,
     Route
 } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Container } from 'semantic-ui-react';
 
 // Pages
 import AdminPages from '/imports/pages/admin/AdminPages';
@@ -17,8 +17,8 @@ import Navbar from '/imports/components/navigation/Navbar';
 export default class AdminLayout extends Component {
 
 
-    componentWillMount(){
-        if(!Roles.userIsInRole(Meteor.userId(), 'admin')){
+    componentWillMount() {
+        if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
             alert("VOUS N'ETES PAS ADMINISTRATEUR")
             this.props.history.push('/')
         }
@@ -31,10 +31,12 @@ export default class AdminLayout extends Component {
                     <Navbar admin={true} />
                 </Grid.Column>
                 <Grid.Column width={16}>
-                    <Switch>
-                        <Route path="/admin/pages" component={AdminPages} />
-                        <Route path="*" component={NotFound} />
-                    </Switch>
+                    <Container>
+                        <Switch>
+                            <Route path="/admin/pages" component={AdminPages} />
+                            <Route path="*" component={NotFound} />
+                        </Switch>
+                    </Container>
                 </Grid.Column>
             </Grid>
         );
