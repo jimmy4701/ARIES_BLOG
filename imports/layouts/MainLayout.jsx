@@ -10,12 +10,17 @@ import {Grid, Container} from 'semantic-ui-react';
 // Pages
 import Landing from '/imports/pages/general/Landing';
 import SigninPage from '/imports/pages/general/SigninPage';
+import PageDisplayer from '/imports/pages/dynamic_pages/PageDisplayer';
 import NotFound from '/imports/pages/general/NotFound';
 
 // Components
 import Navbar from '/imports/components/navigation/Navbar';
 
 export default class MainLayout extends Component {
+
+    componentDidMount(){
+        new WOW().init()
+    }
 
     render() {
         return (
@@ -27,6 +32,7 @@ export default class MainLayout extends Component {
                     <Container>
                         <Switch>
                             <Route exact path="/" component={Landing} />
+                            <Route exact path="/page/:page_id" component={PageDisplayer} />
                             <Route exact path="/sign_in" component={SigninPage} />
                             <Route path="*" component={NotFound} />
                         </Switch>

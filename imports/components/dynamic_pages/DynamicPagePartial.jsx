@@ -27,7 +27,7 @@ export default class DynamicPagePartial extends Component {
     edit_page = () => this.props.onEditClick(this.props.page)
 
     render() {
-        const { page } = this.props
+        const { page, displayMode } = this.props
 
         return (
             <Card {...this.props}>
@@ -40,10 +40,12 @@ export default class DynamicPagePartial extends Component {
                         {page.description}
                     </Card.Description>
                 </Card.Content>
-                <Card.Content extra>
-                    <Button onClick={this.edit_page} icon="edit" content="Editer" />
-                    <Button color="red" onClick={this.remove_page} icon="remove" content="Supprimer" />
-                </Card.Content>
+                {!displayMode &&
+                    <Card.Content extra>
+                        <Button onClick={this.edit_page} icon="edit" content="Editer" />
+                        <Button color="red" onClick={this.remove_page} icon="remove" content="Supprimer" />
+                    </Card.Content>
+                }
             </Card>
         )
     }
