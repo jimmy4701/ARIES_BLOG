@@ -24,6 +24,8 @@ export default class DynamicPagePartial extends Component {
         });
     }
 
+    edit_page = () => this.props.onEditClick(this.props.page)
+
     render() {
         const { page } = this.props
 
@@ -39,6 +41,7 @@ export default class DynamicPagePartial extends Component {
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
+                    <Button onClick={this.edit_page} icon="edit" content="Editer" />
                     <Button color="red" onClick={this.remove_page} icon="remove" content="Supprimer" />
                 </Card.Content>
             </Card>

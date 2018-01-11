@@ -4,44 +4,53 @@ import { Form, Input, Button } from 'semantic-ui-react';
 export default class DynamicPageForm extends Component{
 
     state = {
-        title: '',
-        description: '',
-        image_url: ''
+        page: {}
     }
 
 
     handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })       
+        let { page } = this.state
+        page[event.target.name] = event.target.value
+        this.setState({ page })       
+    }
+
+    componentDidMount(){
+        if(this.props.page){
+            this.setState({page: this.props.page})
+        }
+    }
+
+    componentWillReceiveProps(new_props){
+        if(new_props.page){
+            this.setState({page: new_props.page})
+        }
     }
 
     submit_form = (e) => {
-        e.preventDefault();
-        Meteor.call('dynamic_pages.insert', this.state, (error, result) => {
+        e.preventDefault()
+        const method = this.props.page ? "update" : "insert"
+        Meteor.call('dynamic_pages.' + method, this.state.page, (error, result) => {
             if(error){
                 Bert.alert({
-                   title: "Erreur de création",
-                   message: error.message,
+                   title: "Erreur",
+                   message: error.reason,
                    type: 'danger',
-                   style: 'growl-bottom-right'
+                   style: 'growl-bottom-left'
                 })
             }else{
                 Bert.alert({
-                   title: "Page créée",
+                   title: this.props.page ? "Page modifiée" : "Page créée",
                    type: 'success',
                    style: 'growl-bottom-left'
                 })
-                this.setState({title: '', description: '', image_url: ''})
                 this.props.onSubmitForm && this.props.onSubmitForm()
             }
-        });
+        })
     }
-    
 
     render(){
-        const {title, description, image_url} = this.state
-
+        const { page } = this.state
+        const { title, description, image_url } = page
         return(
             <Form onSubmit={this.submit_form}>
                 <Form.Field>
@@ -57,7 +66,7 @@ export default class DynamicPageForm extends Component{
                     <Input type="text" onChange={this.handleChange} name="image_url" value={image_url} label="http://" />
                 </Form.Field>
                 <Form.Field>
-                   <Button color="green">Créer la page</Button>
+                   <Button color="green">{this.props.page ? "Modifier la page" : "Créer la page"}</Button>
                 </Form.Field>
             </Form>
         )
