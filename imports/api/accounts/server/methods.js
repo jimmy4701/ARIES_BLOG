@@ -5,3 +5,4 @@ Meteor.methods({
     Accounts.createUser({email, password, password_confirmation, username})
   }
 })
+
