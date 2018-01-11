@@ -17,12 +17,17 @@ import Navbar from '/imports/components/navigation/Navbar';
 export default class AdminLayout extends Component {
 
 
-    componentWillMount() {
-        if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
-            alert("VOUS N'ETES PAS ADMINISTRATEUR")
-            this.props.history.push('/')
-        }
-    }
+    // componentWillMount() {
+    //     if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
+    //         Bert.alert({
+    //            title: "Vous n'êtes pas administrateur",
+    //            message: "Mais bien essayé quand même ;)",
+    //            type: 'danger',
+    //            style: 'growl-bottom-left'
+    //         })
+    //         this.props.history.push('/')
+    //     }
+    // }
 
     render() {
         return (

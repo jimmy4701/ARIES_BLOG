@@ -4,7 +4,8 @@ export const DynamicPages = new Mongo.Collection('dynamic_pages');
 
 const DynamicPagesSchema = new SimpleSchema({
     title: {
-        type: String
+        type: String,
+        label: "Titre"
     },
     description: {
         type: String,

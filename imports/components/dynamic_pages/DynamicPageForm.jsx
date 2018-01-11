@@ -22,7 +22,7 @@ export default class DynamicPageForm extends Component{
             if(error){
                 Bert.alert({
                    title: "Erreur de création",
-                   message: error,
+                   message: error.message,
                    type: 'danger',
                    style: 'growl-bottom-right'
                 })
@@ -46,7 +46,7 @@ export default class DynamicPageForm extends Component{
             <Form onSubmit={this.submit_form}>
                 <Form.Field>
                     <label>Titre de la page</label>
-                    <Input type="text" onChange={this.handleChange} name="title" value={title} required/>
+                    <Input type="text" onChange={this.handleChange} name="title" value={title}/>
                 </Form.Field>
                 <Form.Field>
                     <label>Description</label>
