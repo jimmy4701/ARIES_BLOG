@@ -1,16 +1,18 @@
-import { Meteor } from 'meteor/meteor'
-import { DynamicPages } from '../dynamic_pages'
+import { Meteor } from "meteor/meteor"
+import { DynamicPages } from "../dynamic_pages"
 
-Meteor.publish('dynamic_pages.all', function () {
-  if(Roles.userIsInRole(this.userId, 'admin')){
+Meteor.publish("dynamic_pages.all", function() {
+  if (Roles.userIsInRole(this.userId, "admin")) {
     return DynamicPages.find({})
+  } else {
+    DynamicPages.find({ author: this.userId })
   }
 })
 
-Meteor.publish('dynamic_pages.active', function () {
-  return DynamicPages.find({active: true})
+Meteor.publish("dynamic_pages.active", function() {
+  return DynamicPages.find({ active: true })
 })
 
-Meteor.publish('dynamic_pages.by_id', function (page_id) {
+Meteor.publish("dynamic_pages.by_id", function(page_id) {
   return DynamicPages.find({ _id: page_id })
 })
