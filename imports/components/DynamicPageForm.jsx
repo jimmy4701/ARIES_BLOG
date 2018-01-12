@@ -12,7 +12,7 @@ export default class DynamicPageForm extends Component{
     handleChange = (event) => {
         let { page } = this.state
         page[event.target.name] = event.target.value
-        this.setState({ page })       
+        this.setState({ page })
     }
 
     handleContent = (e) => {
@@ -74,9 +74,9 @@ export default class DynamicPageForm extends Component{
                 </Form.Field>
                 <Form.Field>
                     <label>Contenu de la page</label>
-                    {content &&
+                  
                         <TinyMCE onChange={this.handleContent} content={content} />
-                    }
+
                 </Form.Field>
                 <Form.Field>
                    <Button color="green">{this.props.page ? "Modifier la page" : "Créer la page"}</Button>

@@ -11,7 +11,24 @@
 .left-align{
     text-align: center;
 }
+.left{
+    text-align: left !important;
+}
 
+.commentaire{
+  margin: auto;
+}
+
+.pseudo-comm{
+  text-align: left;
+  color: #0094C6;
+}
+
+.box-comments{
+  text-align: left;
+  padding: 20px;
+  border: 1px solid grey;
+}
 .right-align{
     text-align: right;
 }
