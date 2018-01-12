@@ -1,0 +1,6 @@
+head	/home/florent/projects/formation/aries/partiel_react/client/main.html	/^<head>$/;"	function	line:1
+title	/home/florent/projects/formation/aries/partiel_react/client/main.html	/^  <title>La tentative de blog de Florent<\/title>$/;"	function	line:2
+link	/home/florent/projects/formation/aries/partiel_react/client/main.html	/^  <link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/semantic-ui\/2.2.12\/semantic.min.css"><\/link>$/;"	function	line:3
+script	/home/florent/projects/formation/aries/partiel_react/client/main.html	/^  <script src="https:\/\/cloud.tinymce.com\/stable\/tinymce.min.js"><\/script>$/;"	function	line:4
+body	/home/florent/projects/formation/aries/partiel_react/client/main.html	/^<body>$/;"	function	line:7
+div	/home/florent/projects/formation/aries/partiel_react/client/main.html	/^  <div id="root"><\/div>$/;"	function	line:8

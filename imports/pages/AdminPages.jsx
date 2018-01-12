@@ -45,9 +45,9 @@ export class AdminPages extends Component {
                         <Card.Group>
                             {dynamic_pages.map((page, index) => {
                                 return (
-                                    <DynamicPagePartial 
-                                        key={page._id} 
-                                        page={page} 
+                                    <DynamicPagePartial
+                                        key={page._id}
+                                        page={page}
                                         onEditClick={this.editPage}
                                     />
                                 )
