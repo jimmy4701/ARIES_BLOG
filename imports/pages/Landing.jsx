@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { DynamicPages } from '/imports/api/dynamic_pages/dynamic_pages';
-import SignUpForm from '/imports/components/accounts/SignUpForm';
-import SignInForm from '/imports/components/accounts/SignInForm';
-import DynamicPagePartial from '/imports/components/dynamic_pages/DynamicPagePartial'
+import SignUpForm from '/imports/components/SignUpForm';
+import SignInForm from '/imports/components/SignInForm';
+import DynamicPagePartial from '/imports/components/DynamicPagePartial'
 import { Link } from 'react-router-dom';
 
 import { Grid, Header, Loader, Label, Form, Input, Button } from 'semantic-ui-react';

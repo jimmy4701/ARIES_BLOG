@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Grid, Header, Loader, Image, Card, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { DynamicPages } from '/imports/api/dynamic_pages/dynamic_pages';
-import DynamicPageForm from '/imports/components/dynamic_pages/DynamicPageForm';
-import DynamicPagePartial from '/imports/components/dynamic_pages/DynamicPagePartial';
+import DynamicPageForm from '/imports/components/DynamicPageForm';
+import DynamicPagePartial from '/imports/components/DynamicPagePartial';
 
 export class AdminPages extends Component {
 

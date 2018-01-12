@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Grid, Header, Button } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
-import SignInForm from '/imports/components/accounts/SignInForm';
-import SignUpForm from '/imports/components/accounts/SignUpForm';
+import SignInForm from '/imports/components/SignInForm';
+import SignUpForm from '/imports/components/SignUpForm';
 
 
 class SigninPage extends Component {

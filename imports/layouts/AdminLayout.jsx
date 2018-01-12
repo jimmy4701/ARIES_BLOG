@@ -7,11 +7,11 @@ import {
 import { Grid, Container } from 'semantic-ui-react';
 
 // Pages
-import AdminPages from '/imports/pages/admin/AdminPages';
-import NotFound from '/imports/pages/general/NotFound';
+import AdminPages from '/imports/pages/AdminPages';
+import NotFound from '/imports/pages/NotFound';
 
 // Components
-import Navbar from '/imports/components/navigation/Navbar';
+import Navbar from '/imports/components/Navbar';
 
 
 export default class AdminLayout extends Component {

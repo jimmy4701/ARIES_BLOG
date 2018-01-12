@@ -20,7 +20,12 @@ export default class SignUpForm extends Component{
         event.preventDefault()
         Meteor.call('accounts.signup', this.state, (error, result) => {
             if(error){
-                alert("ERREUR LORS DE L'INSCRIPTION : " + error);
+                Bert.alert({
+                   title: "Erreur lors de l'inscription",
+                   message: error.reason,
+                   type: 'danger',
+                   style: 'growl-bottom-left'
+                })
             }else{
                 Meteor.loginWithPassword(this.state.email, this.state.password, (error, result) => {
                     if(error){

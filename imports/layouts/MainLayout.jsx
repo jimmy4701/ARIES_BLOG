@@ -8,13 +8,13 @@ import {
 import {Grid, Container} from 'semantic-ui-react';
 
 // Pages
-import Landing from '/imports/pages/general/Landing';
-import SigninPage from '/imports/pages/general/SigninPage';
-import PageDisplayer from '/imports/pages/dynamic_pages/PageDisplayer';
-import NotFound from '/imports/pages/general/NotFound';
+import Landing from '/imports/pages/Landing';
+import SigninPage from '/imports/pages/SigninPage';
+import PageDisplayer from '/imports/pages/PageDisplayer';
+import NotFound from '/imports/pages/NotFound';
 
 // Components
-import Navbar from '/imports/components/navigation/Navbar';
+import Navbar from '/imports/components/Navbar';
 
 export default class MainLayout extends Component {
 
