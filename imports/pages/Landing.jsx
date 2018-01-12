@@ -16,7 +16,7 @@ export class Landing extends Component {
     }
 
     handleChange = (attr, e) => {
-        let state = this.state
+        let state = this.state;
         state[attr] = e.target.value
         this.setState(state)
     }

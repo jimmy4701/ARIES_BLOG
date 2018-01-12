@@ -45,6 +45,10 @@ export default class DynamicPagePartial extends Component {
                     <Card.Description>
                         {page.description}
                     </Card.Description>
+                    <Card.Description>
+                        <div dangerouslySetInnerHTML={{__html:page.content}}>
+                        </div>
+                    </Card.Description>
                 </Card.Content>
                 {!displayMode &&
                     <Card.Content extra>

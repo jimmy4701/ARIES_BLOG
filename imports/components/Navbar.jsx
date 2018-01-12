@@ -25,13 +25,12 @@ export class Navbar extends Component {
                         Accueil
                     </Menu.Item>
                 </Link>
-                {(user && Roles.userIsInRole(user._id, 'admin')) &&
                     <Link to="/admin/pages">
                         <Menu.Item className={custom_classes}>
                             Admin pages
                         </Menu.Item>
                     </Link>
-                }
+
 
 
                 {user ?

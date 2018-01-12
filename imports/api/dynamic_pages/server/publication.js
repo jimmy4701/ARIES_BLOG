@@ -4,6 +4,8 @@ import { DynamicPages } from '../dynamic_pages'
 Meteor.publish('dynamic_pages.all', function () {
   if(Roles.userIsInRole(this.userId, 'admin')){
     return DynamicPages.find({})
+  }else {
+    return DynamicPages.find({author: this.userId})
   }
 })
 

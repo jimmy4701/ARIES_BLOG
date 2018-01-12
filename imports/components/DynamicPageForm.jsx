@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
+import TinyMCE from 'react-tinymce'
 
 export default class DynamicPageForm extends Component{
 
@@ -12,6 +13,12 @@ export default class DynamicPageForm extends Component{
         let { page } = this.state
         page[event.target.name] = event.target.value
         this.setState({ page })       
+    }
+
+    handleContent = (e) => {
+        let {page} = this.state
+        page.content = e.target.getContent()
+        this.setState({page})
     }
 
     componentDidMount(){
@@ -49,8 +56,8 @@ export default class DynamicPageForm extends Component{
     }
 
     render(){
-        const { page } = this.state
-        const { title, description, image_url } = page
+        const { page  } = this.state
+        const { title, description, image_url, content } = page
         return(
             <Form onSubmit={this.submit_form}>
                 <Form.Field>
@@ -60,6 +67,10 @@ export default class DynamicPageForm extends Component{
                 <Form.Field>
                     <label>Description</label>
                     <Input type="text" onChange={this.handleChange} name="description" value={description} />
+                </Form.Field>
+                <Form.Field>
+                    <label>Content de la page</label>
+                    <TinyMCE onChange={this.handleContent} content={content}/>
                 </Form.Field>
                 <Form.Field>
                     <label>URL d'image</label>
