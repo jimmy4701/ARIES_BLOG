@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { DynamicPages } from "/imports/api/dynamic_pages/dynamic_pages";
-import ContactPageForm from "/imports/components/ContactPageForm";
+import { Comments } from "/imports/api/comments/comments";
+import CommentPageForm from "/imports/components/CommentPageForm";
+import CommentDisplayer from "/imports/components/CommentDisplayer";
 import { withTracker } from "meteor/react-meteor-data";
 import { Grid, Header } from "semantic-ui-react";
 
 export class PageDisplayer extends Component {
   render() {
-    const { loading, page } = this.props;
-
+    const { loading, page, comments } = this.props;
     if (!loading) {
       return (
         <Grid stackable>
@@ -30,7 +31,18 @@ export class PageDisplayer extends Component {
             <p className="wow fadeInUp">{page.description}</p>
             <div dangerouslySetInnerHTML={{ __html: page.content }} />
           </Grid.Column>
-          <ContactPageForm pageId={page._id} />
+          <Grid.Column width={16}>
+            <Header as="h2" dividing>
+              Comments
+            </Header>
+            {comments.length
+              ? comments.map(comment => [
+                  <CommentDisplayer key={comment._id} comment={comment} />,
+                  <hr key={comment._id + Math.random()} />
+                ])
+              : "No comments yet."}
+            <CommentPageForm pageId={page._id} />
+          </Grid.Column>
         </Grid>
       );
     } else {
@@ -42,10 +54,13 @@ export class PageDisplayer extends Component {
 export default (PageDisplayerContainer = withTracker(({ match }) => {
   const { page_id } = match.params;
   const pagePublication = Meteor.subscribe("dynamic_pages.by_id", page_id);
-  const loading = !pagePublication.ready();
+  const commentsPublication = Meteor.subscribe("comments.by_page", page_id);
+  const loading = !pagePublication.ready() || !commentsPublication.ready();
   const page = DynamicPages.findOne({ _id: page_id });
+  const comments = Comments.find({ page: page_id }).fetch();
   return {
     loading,
-    page
+    page,
+    comments
   };
 })(PageDisplayer));

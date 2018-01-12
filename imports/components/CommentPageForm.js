@@ -36,18 +36,15 @@ export default class ContactPageForm extends Component {
   render() {
     const { comment } = this.state;
     return (
-      <Grid.Column width={16}>
-        <Header as="h2">Comments</Header>
-        <Form onSubmit={this.handleFormSubmit}>
-          <Form.Field>
-            <label>Enter your comment below :</label>
-            <TinyMCE onChange={this.handleChange} content={comment} />
-          </Form.Field>
-          <Button type="submit" color="green" basic>
-            Send
-          </Button>
-        </Form>
-      </Grid.Column>
+      <Form onSubmit={this.handleFormSubmit}>
+        <Form.Field>
+          <label>Enter your comment below :</label>
+          <TinyMCE onChange={this.handleChange} content={comment} />
+        </Form.Field>
+        <Button type="submit" color="green" basic>
+          Send
+        </Button>
+      </Form>
     );
   }
 }
