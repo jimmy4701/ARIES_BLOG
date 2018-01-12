@@ -10,10 +10,12 @@ const CommentsSchema = new SimpleSchema({
   content: {
     type: String
   },
+
   created_at: {
       type: Date,
       defaultValue: new Date()
   },
+  
   page: {
     type: String,
   }

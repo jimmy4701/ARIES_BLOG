@@ -7,16 +7,10 @@ export default class CommentPartial extends Component {
         const { comment } = this.props
 
         return (
-            <Card {...this.props}>
-                <Card.Content>
-                    <Card.Header>
-                        {comment.created_at}
-                    </Card.Header>
-                    <Card.Description>
-                        {comment.content}
-                    </Card.Description>
-                </Card.Content>
-            </Card>
+          <div>
+            <h2>{comment.created_at}</h2>
+            <p>{comment.content}</p>
+          </div>
         )
     }
 }

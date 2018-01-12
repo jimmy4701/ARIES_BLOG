@@ -9,3 +9,5 @@ Meteor.methods({
         Comments.insert(comment)
     },
 })
+
+/* @TODO: Add delete for admin and author creator */

@@ -4,15 +4,15 @@ import TinyMCE from 'react-tinymce';
 
 export default class CommentForm extends Component{
 
-  state = {
-    content: ""
-  }
-
-    handleChange = (event) => {
-        let { comment } = this.state
-        comment[event.target.name] = event.target.value
-        this.setState({ comment })
+    state = {
+      comment: {comment}
     }
+    //
+    // handleChange = (event) => {
+    //     let { comment } = this.state
+    //     comment[event.target.name] = event.target.value
+    //     this.setState({ comment })
+    // }
 
     handleContent = (e) => {
         let {comment} = this.state
@@ -34,8 +34,7 @@ export default class CommentForm extends Component{
 
     submit_form = (e) => {
         e.preventDefault()
-        const method = this.props.comment ? "update" : "insert"
-        Meteor.call('comments.' + method, this.state.comment, (error, result) => {
+        Meteor.call('comments.insert', this.state.comment, (error, result) => {
             if(error){
                 Bert.alert({
                    title: "Commentaire non ajouté",
@@ -56,12 +55,12 @@ export default class CommentForm extends Component{
 
     render(){
         const { comment } = this.state
-        const { author, content, created_at } = comment
+        const { content } = comment
         return(
             <Form onSubmit={this.submit_form}>
                 <Form.Field>
                     <label>Votre message :</label>
-                    {content &&
+                    {
                         <TinyMCE onChange={this.handleContent} content={content} />
                     }
                 </Form.Field>

@@ -5,6 +5,6 @@ Meteor.publish('comments.all', function () {
   return Comments.find({})
 })
 
-Meteor.publish('comments.by_id', function (page_id) {
-  return Comments.find({ _id: page_id })
+Meteor.publish('comments.by_page', function (page_id) {
+  return Comments.find({page: page_id })
 })
