@@ -17,8 +17,8 @@ export class PageDisplayer extends Component {
 
     postComment = () => {
         const {comment} = this.state
-        const {page_id} = this.props
-        Meteor.call('comments.insert', {comment, page_id}, (error, result) => {
+        const {page} = this.props
+        Meteor.call('comments.insert', {comment, page_id: page._id}, (error, result) => {
             if(error){
                 Bert.alert({
                    title: "Erreur",
@@ -71,7 +71,7 @@ export class PageDisplayer extends Component {
                     <Grid.Column>
                     {comments.map((commentaire) => {
                         return(
-                            <p>{commentaire}</p>
+                            <p>{commentaire.content}</p>
                         )
                     })}
                     </Grid.Column>

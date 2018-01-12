@@ -6,6 +6,9 @@ const CommentsSchema = new SimpleSchema({
     content: {
         type: String,
     },
+    page: {
+        type: String
+    },
     created_at: {
         type: Date
     }, 
