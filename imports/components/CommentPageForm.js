@@ -12,26 +12,34 @@ export default class ContactPageForm extends Component {
   };
 
   handleFormSubmit = () => {
-    Meteor.call(
-      "comments.insert",
-      this.state.comment,
-      this.props.pageId,
-      (error, result) => {
-        if (error) {
-          Bert.alert({
-            title: error.reason,
-            type: "danger",
-            style: "growl-bottom-right"
-          });
-        } else {
-          Bert.alert({
-            title: "Comment added !",
-            type: "success",
-            style: "growl-bottom-right"
-          });
+    if (this.state.comment.length) {
+      Meteor.call(
+        "comments.insert",
+        this.state.comment,
+        this.props.pageId,
+        (error, result) => {
+          if (error) {
+            Bert.alert({
+              title: error.reason,
+              type: "danger",
+              style: "growl-bottom-right"
+            });
+          } else {
+            Bert.alert({
+              title: "Comment added !",
+              type: "success",
+              style: "growl-bottom-right"
+            });
+          }
         }
-      }
-    );
+      );
+    } else {
+      Bert.alert({
+        title: "Comment is empty...",
+        type: "danger",
+        style: "growl-bottom-right"
+      });
+    }
   };
   render() {
     const { comment } = this.state;
