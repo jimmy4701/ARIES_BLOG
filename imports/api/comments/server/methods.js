@@ -20,9 +20,12 @@ Meteor.methods({
       throw new Meteor.Error("not-connected", "You are not connected");
     }
   },
-  "comments.remove_one"(comment_id) {
-    if (Roles.userIsInRole(Meteor.userId(), "admin")) {
-      Comments.remove(comment_id);
+  "comments.remove_one"(comment) {
+    if (
+      Roles.userIsInRole(Meteor.userId(), "admin") ||
+      this.userId === comment.author
+    ) {
+      Comments.remove(comment._id);
     } else {
       throw new Meteor.Error("permission-denied", "You can't do that");
     }
