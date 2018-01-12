@@ -21,6 +21,9 @@ const DynamicPagesSchema = new SimpleSchema({
     },
     created_at: {
         type: Date
+    },
+    author: {
+        type: String
     }
 })
 
