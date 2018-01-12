@@ -1,4 +1,6 @@
 import { Meteor } from "meteor/meteor"
-import { Comments } from "../comments"
+import { CommentsModel } from "../comments"
 
-Meteor.publish("comments.by_id", page_id => Comments.find({ page_id }))
+// Meteor.publish("comments.all", () => CommentsModel.find())
+
+Meteor.publish("comments.by_id", page_id => CommentsModel.find({ page_id }))

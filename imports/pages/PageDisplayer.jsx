@@ -1,9 +1,16 @@
 import React, { Component } from "react"
 import { DynamicPages } from "/imports/api/dynamic_pages/dynamic_pages"
+import { CommentsModel } from "/imports/api/comments/comments"
 import { withTracker } from "meteor/react-meteor-data"
 import { Grid, Header } from "semantic-ui-react"
+import Comments from "/imports/components/Comments"
 
 export class PageDisplayer extends Component {
+  onCommentSubmit = content => {
+    const page_id = this.props.page._id
+    Meteor.call("comments.insert", page_id, content)
+  }
+
   render() {
     const { loading, page } = this.props
     if (!loading) {
@@ -28,6 +35,11 @@ export class PageDisplayer extends Component {
             <p className="wow fadeInUp">{page.description}</p>
             <div dangerouslySetInnerHTML={{ __html: page.content }} />
           </Grid.Column>
+          <Comments
+            comments={this.props.comments || []}
+            onCommentSubmit={this.onCommentSubmit}
+          />
+          <Grid.Column />
         </Grid>
       )
     } else {
@@ -39,10 +51,13 @@ export class PageDisplayer extends Component {
 export default (PageDisplayerContainer = withTracker(({ match }) => {
   const { page_id } = match.params
   const pagePublication = Meteor.subscribe("dynamic_pages.by_id", page_id)
-  const loading = !pagePublication.ready()
+  const commentsPublication = Meteor.subscribe("comments.by_id", page_id)
+  const loading = !pagePublication.ready() && !commentsPublication.ready()
   const page = DynamicPages.findOne({ _id: page_id })
+  const comments = CommentsModel.find({ page_id }).fetch()
   return {
     loading,
-    page
+    page,
+    comments
   }
 })(PageDisplayer))
