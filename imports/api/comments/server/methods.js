@@ -4,7 +4,7 @@ import { DynamicPages } from "../../dynamic_pages/dynamic_pages";
 
 Meteor.methods({
   "comments.insert"(comment, page_id) {
-    if (!this.userId) {
+    if (this.userId) {
       const page_exist = DynamicPages.findOne(page_id);
       if (page_exist) {
         const new_comment = {
