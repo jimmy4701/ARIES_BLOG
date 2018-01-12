@@ -15,6 +15,10 @@ const DynamicPagesSchema = new SimpleSchema({
         type: String,
         optional: true
     },
+    active: {
+        type: Boolean,
+        defaultValue: true
+    },
     created_at: {
         type: Date
     }

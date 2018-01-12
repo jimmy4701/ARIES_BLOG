@@ -24,6 +24,12 @@ export default class DynamicPagePartial extends Component {
         });
     }
 
+    toggleActive = () => {
+        const {page} = this.props
+        page.active = !page.active
+        Meteor.call('dynamic_pages.update', page);
+    }
+
     edit_page = () => this.props.onEditClick(this.props.page)
 
     render() {
@@ -42,6 +48,7 @@ export default class DynamicPagePartial extends Component {
                 </Card.Content>
                 {!displayMode &&
                     <Card.Content extra>
+                        <Button onClick={this.toggleActive}>{page.active ? "Désactiver" : "Activer"}</Button>
                         <Button onClick={this.edit_page} icon="edit" content="Editer" />
                         <Button color="red" onClick={this.remove_page} icon="remove" content="Supprimer" />
                     </Card.Content>

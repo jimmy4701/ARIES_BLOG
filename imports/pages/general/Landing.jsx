@@ -57,7 +57,7 @@ export class Landing extends Component {
 }
 
 export default LandingContainer = withTracker(() => {
-    const dynamicPagesPublication = Meteor.subscribe('dynamic_pages.all')
+    const dynamicPagesPublication = Meteor.subscribe('dynamic_pages.active')
     const loading = !dynamicPagesPublication.ready()
     const dynamic_pages = DynamicPages.find({}).fetch()
     const user_id = Meteor.userId()
