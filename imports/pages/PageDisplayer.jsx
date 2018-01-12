@@ -20,6 +20,7 @@ export class PageDisplayer extends Component {
                     <Grid.Column width={16} className="center-align">
                         <Header as='h1' className="wow fadeInUp">{page.title}</Header>
                         <p className="wow fadeInUp">{page.description}</p>
+                        <div dangerouslySetInnerHTML={{__html: page.content }}></div>
                     </Grid.Column>
                 </Grid>
             )
