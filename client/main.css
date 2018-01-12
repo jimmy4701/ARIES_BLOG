@@ -31,3 +31,8 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+/* TINYMCE HACK */
+.mce-notification {
+    display: none;
+}

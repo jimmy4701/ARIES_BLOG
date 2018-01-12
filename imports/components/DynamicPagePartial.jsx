@@ -49,7 +49,7 @@ export default class DynamicPagePartial extends Component {
                 {!displayMode &&
                     <Card.Content extra>
                         <Button onClick={this.toggleActive}>{page.active ? "Désactiver" : "Activer"}</Button>
-                        <Button onClick={this.edit_page} icon="edit" content="Editer" />
+                        <Button color="green" onClick={this.edit_page} icon="edit" content="Editer" />
                         <Button color="red" onClick={this.remove_page} icon="remove" content="Supprimer" />
                     </Card.Content>
                 }

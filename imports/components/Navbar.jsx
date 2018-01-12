@@ -14,7 +14,7 @@ export class Navbar extends Component {
         const custom_classes = admin && "white-item"
 
         return (
-            <Menu secondary borderless style={{ backgroundColor: admin && "#6582c5" }}>
+            <Menu secondary borderless style={{ backgroundColor: admin && "black" }}>
                 {admin &&
                     <Menu.Item className={custom_classes} >
                         ADMIN
@@ -25,10 +25,10 @@ export class Navbar extends Component {
                         Accueil
                     </Menu.Item>
                 </Link>
-                {(user && Roles.userIsInRole(user._id, 'admin')) &&
+                {user && 
                     <Link to="/admin/pages">
                         <Menu.Item className={custom_classes}>
-                            Admin pages
+                            Créer une page
                         </Menu.Item>
                     </Link>
                 }

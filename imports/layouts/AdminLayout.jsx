@@ -33,7 +33,7 @@ export default class AdminLayout extends Component {
         return (
             <Grid stackable>
                 <Grid.Column width={16}>
-                    <Navbar admin={true} />
+                    <Navbar />
                 </Grid.Column>
                 <Grid.Column width={16}>
                     <Container>
